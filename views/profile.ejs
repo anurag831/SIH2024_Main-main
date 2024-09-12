@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <%- include('./layouts/navbar') %>
+    <%- include('./layouts/flash-message') %>
+
+    <main>
+
+        <div style="display: flex;;">
+            <h1 style="font-size: xxx-larger;"><span class="goback" onclick="window.history.back()"> ← </span> Dashboard
+            </h1>
+            <img src="/images/profile_image1.jpg" alt="">
+        </div>
+
+        <div class="profile">
+            <div>
+                <p class="title">Name OF Post Office</p>
+                <p class="subtitle">
+                    <%= person.name %>
+                </p>
+            </div>
+
+            <div>
+                <p class="title">Email / Username</p>
+                <p class="subtitle">
+                    <%= person.email %>
+                </p>
+            </div>
+
+            <div>
+                <p class="title">Role</p>
+                <p class="subtitle">
+                    <%= person.role %>
+                </p>
+            </div>
+
+            <div>
+                <p class="title">Address</p>
+                <pre class="subtitle"><%= person.address %></pre>
+            </div>
+
+            <div>
+                <p class="title">Pin Code</p>
+                <p class="subtitle">
+                    <%= person.pincode %>
+                </p>
+            </div>
+
+            <div>
+                <p class="title">City/Village</p>
+                <p class="subtitle">
+                    <%= person.city %>
+                </p>
+            </div>
+
+            <div>
+                <p class="title">State</p>
+                <p class="subtitle">
+                    <%= person.state %>
+                </p>
+            </div>
+        </div>
+
+        <div class="camera-buttons">
+            <button id="startButton">Start Camera</button>
+            <button id="stopButton">Stop Camera</button>
+        </div>
+            <% if (user) { %>
+                <% if (user.role==='ADMIN' ) { %>
+                    
+                     <div class="warnContainer">
+                        <form action="/admin/user/<%= person._id %>" method="post">
+                            <input type="text" name="warningValue" id="warningValue" placeholder="Enter Warning Message" required>
+                            <input type="submit" value="Send Warning" id="warnButton">
+                        </form>
+                     </div>
+                <% } %>
+            <% } %>
+
+            <h1 style="margin-top: 30px;">Alerts!</h1>
+
+            <% if (data && data.length > 0) { %>
+                <div class="warningTableContainer">
+                    <div class="warningRow">
+                        <div class="warningMsg" style="text-align: center; font-size: 1.3rem;">
+                            Warning Message                                
+                        </div>
+                        <span class="warningDate" style="font-size: 1.3rem;">Date and Time</span>
+                    </div>
+
+                    <% data.forEach(warning => { %>
+                        <div class="warningRow">
+                            <div class="warningMsg">
+                                <%= warning.warningValue %>                                
+                            </div>
+                            <span class="warningDate"><%= new Date(warning.createdAt).toLocaleString() %></span>
+                        </div>
+                    <% }) %>
+
+                </div>
+                
+            <% } else { %>
+                <p>No warnings available.</p>
+            <% } %>
+        
+  
+    </main>
+
+
+    <div style="padding: 30px; display: flex; gap: 20px; flex-direction: column; margin-top: 40px;">
+        <hr>
+    <div class="questions">
+        Questions? <br>Address: Yogayog Bhawan, P-36, C.R. Avenue, Kolkata - 700012. <br> Call: 033-22120070 (Tel),
+        22120811 (Fax)
+    </div>
+    <div class="footer" style="display: flex; justify-content: space-evenly;">
+        <div class="footer-item">
+            <a href="faq">Terms of Use</a>
+        </div>
+
+        <div class="footer-item">
+
+            <a href="faq">Dashboard</a>
+        </div>
+        <div class="footer-item">
+            <a href="faq">Privacy</a>
+        </div>
+
+        <div class="footer-item">
+            <a href="faq">Contact Us</a>
+            <a href="/">cpmg_wb@indiapost.gov.in</a>
+        </div>
+    </div>
+</div>
+    
+
+    <script>
+        const personName = "<%= person.name %>";
+        const personEmail = "<%= person.email %>";
+
+        document.getElementById('startButton').addEventListener('click', () => {
+            fetch('/start-python')
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(error => alert('Error: ' + error));
+        });
+
+        document.getElementById('stopButton').addEventListener('click', () => {
+            fetch('/stop-python')
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(error => alert('Error: ' + error));
+        });
+
+        
+    </script>
+</body>
+
+</html>

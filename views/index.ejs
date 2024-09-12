@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swachcha PO</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .first,
+        .second,
+        .third {
+            height: 72vh;
+            display: flex;
+            padding-left: 2vw;
+            padding-right: 2vw;
+        }
+
+        .img,
+        .text {
+            width: 50vw;
+        }
+
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-left: 30px;
+            padding-right: 20px;
+            /* background-color: red; */
+        }
+
+        .text>div {
+            /* height: fit-content; */
+            /* background-color: blue; */
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            gap: 10px;
+            padding-top: 10px;
+            padding-right: 30px;
+            border-radius: 13px;
+            padding-bottom: 30px;
+            box-shadow: -1px 15px 20px 4px gray;
+        }
+
+        .second>.text {
+            align-items: flex-start;
+        }
+
+        .second>.text>div {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 45vw;
+            gap: 10px;
+            padding-top: 10px;
+            padding-left: 30px;
+            border-radius: 13px;
+            padding-bottom: 30px;
+            box-shadow: -1px 15px 20px 4px gray;
+        }
+
+        .second>.text>div>p {
+            text-align: left;
+            width: auto;
+        }
+
+        .text>div>h1 {
+            /* background-color: green; */
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .text>div>p {
+            /* background-color: blue; */
+            width: fit-content;
+            text-align: end;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .text>div>a>button {
+            /* background-color: pink; */
+            /* background-color: rgb(105, 209, 105); */
+            background: linear-gradient(to right, #8eff00, #a8bba000);
+            width: fit-content;
+            border-radius: 13px;
+            padding: 10px;
+            font-size: medium;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+
+
+        .text>div>h1,
+        p {
+            width: fit-content;
+        }
+
+        .img {
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            padding-left: 10px;
+            /* background-color: blue; */
+        }
+
+        .img>img,
+        video {
+            width: 40vw;
+        }
+
+        .footer {
+            height: 10vh;
+        }
+
+        #anchor:hover {
+            background: white;
+        }
+
+        .footer-item>a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('./layouts/navbar') %>
+
+        <!-- bg image url : https://swachhindia.ndtv.com/wp-content/uploads/sites/3/2017/08/Swachh-India-Independence-Day-Special-India-at-70main_img1920.png -->
+
+        <div class="first">
+            <div class="img">
+                <!-- <img src="https://i.ibb.co/5" alt=""> -->
+                <!-- <img src="https://www.shutterstock.com/image-vector/clean-india-english-meaning-swachh-260nw-1814270990.jpg" alt=""> -->
+                <img src="https://t4.ftcdn.net/jpg/03/57/21/69/360_F_357216916_ttyxKDv4DlSz0xCsJFGqldsVG8xoFalz.jpg"
+                    alt="">
+
+            </div>
+            <div class="text">
+                <div>
+                    <h1>Get Started</h1>
+                    <p>Check if your surroundings need a swaccha improvement</p>
+                    <a id="anchor" href="#second"><button>View Demo</button></a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="second" id="second">
+
+            <div class="text">
+                <div>
+                    <h1>"This software is</h1>
+                    <h1>re-usable"</h1>
+                    <p>Here's a video that might help</p>
+                </div>
+            </div>
+            <div class="img" style="justify-content: center;">
+                <video src="/videos/Demo2.mp4" autoplay loop muted></video>
+            </div>
+        </div>
+
+        <div class="third">
+            <div class="img">
+
+                <!-- <img style="border-radius: 30px;"
+                    src="https://www.researchgate.net/publication/356691001/figure/fig7/AS:1098214065352722@1638846045650/shows-some-accurate-inferences-made-by-YOLOv5m6-and-Figure-12-shows-some-inaccurate.ppm"
+                    alt=""> -->
+                <img style="width: 44vw;" src="/images/Untitled_design.png" alt="">
+            </div>
+            <div class="text" style="align-items: end;">
+                <div style="width: 40vw; padding-top: 20px;">
+                    <h1>Image Insights</h1>
+                    <p>Get familiar with our AI</p>
+
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+
+        <div style="padding: 30px; display: flex; gap: 20px; flex-direction: column;">
+            <div class="questions">
+                Questions? <br>Address: Yogayog Bhawan, P-36, C.R. Avenue, Kolkata - 700012. <br> Call: 033-22120070 (Tel), 22120811 (Fax)
+            </div>
+            <div class="footer" style="display: flex; justify-content: space-evenly;">
+                <div class="footer-item">
+                    <a href="faq">Terms of Use</a>
+                </div>
+
+                <div class="footer-item">
+
+                    <a href="faq">Dashboard</a>
+                </div>
+                <div class="footer-item">
+                    <a href="faq">Privacy</a>
+                </div>
+
+                <div class="footer-item">
+                    <a href="faq">Contact Us</a>
+                    <a href="/">cpmg_wb@indiapost.gov.in</a>
+                </div>
+            </div>
+        </div>
+
+        <script>document.querySelector('video').playbackRate = 2.5;</script>
+</body>
+
+</html>
